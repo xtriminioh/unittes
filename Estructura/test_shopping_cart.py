@@ -7,12 +7,11 @@ class TestShoppingCart(unittest.TestCase):
         name = 'Manzana'
         price = 1.70
 
-        self.new_product = Product(name,price)
+        new_product = Product(name,price)
 
         #verificamos si los atributos que se crearon los tiene el nuevo producto
-        self.assertEqual(self.new_product.name, name)
-        self.assertEqual(self.new_product.price, price)
+        self.assertEqual(new_product.name, name, 'Lo sentimos, el nombre no es el mismo.')
+        self.assertEqual(new_product.price, price, 'Lo sentimos, el precio no es el mismo.')
 
 
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == '__main__': unittest.main()

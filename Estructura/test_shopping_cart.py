@@ -47,7 +47,10 @@ class TestShoppingCart(unittest.TestCase):
         self.assertEqual(self.smartphone.price, self.price)
 
     def test_shopping_cart_empty(self):
-        self.assertTrue(self.shopping_cart_1.empty())
+        self.assertTrue(
+            self.shopping_cart_1.empty(),
+            'Lo sentimos, el carrito de compra esta vacio!'
+        )
 
 if __name__ == '__main__':
     unittest.main()

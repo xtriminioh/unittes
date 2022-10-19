@@ -53,7 +53,7 @@ class TestShoppingCart(unittest.TestCase):
         )
 
     def test_shopping_cart_add_product(self):
-        self.shopping_cart_1.add(self.smartphone)
+        self.shopping_cart_1.add_product(self.smartphone)
         self.assertTrue(self.shopping_cart_1.has_product())
 
 if __name__ == '__main__':

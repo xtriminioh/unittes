@@ -59,5 +59,8 @@ class TestShoppingCart(unittest.TestCase):
         self.assertTrue(self.shopping_cart_2.has_products())
         self.assertFalse(self.shopping_cart_2.empty())
 
+    def test_product_in_shopping_cart(self):
+        self.assertIn(self.smartphone, self.shopping_cart_2.products)
+
 if __name__ == '__main__':
     unittest.main()

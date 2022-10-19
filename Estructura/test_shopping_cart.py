@@ -27,5 +27,8 @@ class TestShoppingCart(unittest.TestCase):
     def test_prrduct_name(self):
         self.assertEqual(self.smartphone.name, self.name)
 
+    def test_prrduct_price(self):
+        self.assertEqual(self.smartphone.price, self.price)
+
 if __name__ == '__main__':
     unittest.main()

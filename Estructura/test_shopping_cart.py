@@ -56,7 +56,7 @@ class TestShoppingCart(unittest.TestCase):
         )
 
     def test_shopping_cart_has_product(self):
-        self.assertTrue(self.shopping_cart_2.has_product())
+        self.assertTrue(self.shopping_cart_2.has_products())
 
 if __name__ == '__main__':
     unittest.main()

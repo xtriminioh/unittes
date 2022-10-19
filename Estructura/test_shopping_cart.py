@@ -52,5 +52,9 @@ class TestShoppingCart(unittest.TestCase):
             'Lo sentimos, el carrito de compra esta vacio!'
         )
 
+    def test_shopping_cart_add_product(self):
+        self.shopping_cart_1.add(self.smartphone)
+        self.assertTrue(self.shopping_cart_1.has_product())
+
 if __name__ == '__main__':
     unittest.main()

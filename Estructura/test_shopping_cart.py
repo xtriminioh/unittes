@@ -25,6 +25,9 @@ class TestShoppingCart(unittest.TestCase):
         self.smartphone = Product(self.name, self.price)
         self.shopping_cart_1 = ShoppingCart()
 
+        self.shopping_cart_2 = ShoppingCart()
+        self.shopping_cart_2.add_product(self.smartphone)
+
 
     def tearDown(self):
         """Este Metodo teardown se ejeuta despues de cada una de ls pruebas."""
@@ -52,9 +55,8 @@ class TestShoppingCart(unittest.TestCase):
             'Lo sentimos, el carrito de compra esta vacio!'
         )
 
-    def test_shopping_cart_add_product(self):
-        self.shopping_cart_1.add_product(self.smartphone)
-        self.assertTrue(self.shopping_cart_1.has_product())
+    def test_shopping_cart_has_product(self):
+        self.assertTrue(self.shopping_cart_2.has_product())
 
 if __name__ == '__main__':
     unittest.main()

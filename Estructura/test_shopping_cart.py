@@ -61,6 +61,10 @@ class TestShoppingCart(unittest.TestCase):
 
     def test_product_in_shopping_cart(self):
         self.assertIn(self.smartphone, self.shopping_cart_2.products)
+    
+    def test_product_not_in_shopping_cart(self):
+        self.shopping_cart_2.remove_product(self.smartphone)
+        self.assertNotIn(self.smartphone, self.shopping_cart_2.products)
 
 if __name__ == '__main__':
     unittest.main()

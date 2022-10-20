@@ -20,5 +20,5 @@ class ShoppingCart:
     def has_products(self) -> bool:
         return not self.empty()
 
-
-    
+    def remove_product(self, product: Product) -> None:
+        self.__products.remove(product)

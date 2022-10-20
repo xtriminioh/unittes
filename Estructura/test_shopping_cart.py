@@ -68,9 +68,20 @@ class TestShoppingCart(unittest.TestCase):
         self.assertNotIn(self.smartphone, self.shopping_cart_2.products)
 
     def test_discount_error(self):
-        """En este contexto, realizaremos las operaciones 
-            que nos lanzaran el error"""
+        #En este contexto, realizaremos las operaciones 
+        #que nos lanzaran el error.
         with self.assertRaises(ProductDiscountError):
             Product(name='Example',price=10.0, discount=11.0)
+
+    def test_total_shopping_cart(self):
+        self.shopping_cart_1.add_product(Product(name='Libro', price=15.0))
+        self.shopping_cart_1.add_product(Product(name='Camara', price=75.0))
+
+        #assertGreater nos permite evaluar mayor que.
+        self.assertGreater(self.shopping_cart_1.total,0)
+        #assertLess nos permite evaluar menor que.
+        self.assertLesst(self.shopping_cart_1.total,1000)
+        #assertGreaterEqual es igual que >=
+        #assertLesstEqual es igual que <=
 
 if __name__ == '__main__': unittest.main()

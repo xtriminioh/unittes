@@ -10,6 +10,11 @@ class ShoppingCart:
             que contenga el carrito de compras - decorado @propety"""
         return self.__products.copy()
 
+    @property
+    def total(self):
+        total = [ (product.price - product.discount) for product in self.__products]
+        return sum(total)
+
     def add_product(self, product: Product) -> None:
         if isinstance(product,Product):
             self.__products.append(product)

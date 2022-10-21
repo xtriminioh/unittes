@@ -127,5 +127,13 @@ class TestShoppingCart(unittest.TestCase):
     def test_skip_example_three(self):
         pass
 
+    #Validar expresiones regulares con assertRegex
+    def test_code_product(self):
+        self.assertRegex(
+            self.smartphone.code,
+            self.smartphone.name,
+            'la expresion, self.smartphone.nameel', 'Lo sentimos, el codigo no cumple con la expresion'
+        )
+
 if __name__ == '__main__':
     unittest.main()

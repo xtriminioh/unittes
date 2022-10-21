@@ -44,10 +44,10 @@ class TestShoppingCart(unittest.TestCase):
         self.assertEqual(new_product.name, name)
         self.assertEqual(new_product.price, price)
 
-    def test_prrduct_name(self):
+    def test_product_name(self):
         self.assertEqual(self.smartphone.name, self.name)
 
-    def test_prrduct_price(self):
+    def test_product_price(self):
         self.assertEqual(self.smartphone.price, self.price)
 
     def test_shopping_cart_empty(self):
@@ -74,14 +74,21 @@ class TestShoppingCart(unittest.TestCase):
             Product(name='Example',price=10.0, discount=11.0)
 
     def test_total_shopping_cart(self):
+        #creamos nuevos productos y los agregados al carrito de compra.
         self.shopping_cart_1.add_product(Product(name='Libro', price=15.0))
-        self.shopping_cart_1.add_product(Product(name='Camara', price=75.0))
+        self.shopping_cart_1.add_product(Product(name='Camara', price=700.0, discount=70.0))
 
         #assertGreater nos permite evaluar mayor que.
         self.assertGreater(self.shopping_cart_1.total,0)
         #assertLess nos permite evaluar menor que.
-        self.assertLesst(self.shopping_cart_1.total,1000)
+        self.assertLess(self.shopping_cart_1.total,1000)
+        #assertEqual nos permite evaluar a igual
+        self.assertEqual(self.shopping_cart_1.total,645.00)
         #assertGreaterEqual es igual que >=
-        #assertLesstEqual es igual que <=
+        #assertLessEqual es igual que <=
 
-if __name__ == '__main__': unittest.main()
+    def test_total_empty_shopping_cart(self):
+        self.assertEqual(self.shopping_cart_1.total, 0)
+
+if __name__ == '__main__':
+    unittest.main()

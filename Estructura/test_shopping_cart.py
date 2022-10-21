@@ -4,6 +4,19 @@ from product import Product
 from product import ProductDiscountError
 from shopping_cart import ShoppingCart
 
+def is_available_to_skip():
+    """En esta funcion se puede realizar las diferentes comprobaciones.
+        para detectar si se puede realizar un prueba unitaria.
+    """
+    return True
+
+def is_connected():
+    """Es esta funcion se puere realizar el test si se realizado.
+        una conexion a una base de datos. para de esta forma relizar
+        la prueba unitaria.
+    """
+    return False
+
 class TestShoppingCart(unittest.TestCase):
 
     @classmethod
@@ -89,6 +102,30 @@ class TestShoppingCart(unittest.TestCase):
 
     def test_total_empty_shopping_cart(self):
         self.assertEqual(self.shopping_cart_1.total, 0)
+
+    #Formas de saltar, las pruebas unitarias. (Que las puebas no se ejecuten)
+    #En unittest, (1) - cuando el desarrollador, conoce de ante mano que la pueba no
+    #puede ejecutarce, (2) - cuando el desarrollador, desconoce su la prueba puede
+    #o no ejecutarse.
+    # pricipalmente debido a factores externos.
+
+    #caso (1)
+    @unittest.skip('La prueba no cumple con los requerimientos necesarios.')
+    def test_skip_example(self):
+        #Esta prueba sera saltada, y para ello utiliza el decorador @unittest.skip()
+        #el cual recibe un string.
+        self.assertEqual(1,1)
+
+    #caso (2)
+    # skipIf -> Evalua sobre Verdadero
+    # skipUnless -> Evalua sobre Falso.
+    @unittest.skipIf(is_available_to_skip(),'No se cuenta con todos los requerimientos.')
+    def test_skip_example_two(self):
+        pass
+
+    @unittest.skipUnless(is_connected(),'No se cuenta con todos los requerimientos.')
+    def test_skip_example_three(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()

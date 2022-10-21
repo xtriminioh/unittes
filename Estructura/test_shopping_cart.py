@@ -132,7 +132,7 @@ class TestShoppingCart(unittest.TestCase):
         self.assertRegex(
             self.smartphone.code,
             self.smartphone.name,
-            'la expresion, self.smartphone.nameel', 'Lo sentimos, el codigo no cumple con la expresion'
+            'la expresion, Lo sentimos, el codigo no cumple con la expresion'
         )
 
 if __name__ == '__main__':

@@ -43,35 +43,11 @@ class TestShoppingCart(unittest.TestCase):
 
     def setUp(self):
         """Este Metodo setup se ejecuta antes de cada una de las pruebas."""
-        self.name = 'iPhone'
-        self.price = 500.00
-
-        self.smartphone = Product(self.name, self.price)
-        self.shopping_cart_1 = ShoppingCart()
-
-        self.shopping_cart_2 = ShoppingCart()
-        self.shopping_cart_2.add_product(self.smartphone)
-
+        pass
 
     def tearDown(self):
         """Este Metodo teardown se ejeuta despues de cada una de las pruebas."""
         pass
-
-    def test_product_object(self):
-        name = 'Manzana'
-        price = 1.70
-
-        new_product = Product(name,price)
-
-        #verificamos si los atributos que se crearon los tiene el nuevo producto
-        self.assertEqual(new_product.name, name)
-        self.assertEqual(new_product.price, price)
-
-    def test_product_name(self):
-        self.assertEqual(self.smartphone.name, self.name)
-
-    def test_product_price(self):
-        self.assertEqual(self.smartphone.price, self.price)
 
     def test_shopping_cart_empty(self):
         msg_error = 'Lo sentimos, el carrito de compra esta vacio!'
@@ -88,11 +64,6 @@ class TestShoppingCart(unittest.TestCase):
         self.shopping_cart_2.remove_product(self.smartphone)
         self.assertNotIn(self.smartphone, self.shopping_cart_2.products)
 
-    def test_discount_error(self):
-        #En este contexto, realizaremos las operaciones 
-        #que nos lanzaran el error.
-        with self.assertRaises(ProductDiscountError):
-            Product(name='Example',price=10.0, discount=11.0)
 
     def test_total_shopping_cart(self):
         #creamos nuevos productos y los agregados al carrito de compra.
@@ -143,10 +114,3 @@ class TestShoppingCart(unittest.TestCase):
         #y el segundo arg2 -> sera un string con un msjs para el usuario.
         pass
 
-    #Validar expresiones regulares con assertRegex
-    def test_code_product(self):
-        msg_error = 'la expresion, Lo sentimos, el codigo no cumple con la expresion'
-        self.assertRegex(self.smartphone.code, self.smartphone.name, msg_error)
-
-if __name__ == '__main__':
-    unittest.main()

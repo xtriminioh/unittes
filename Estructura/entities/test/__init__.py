@@ -6,8 +6,12 @@
     se ejecutarn de la siguientes forma:
 
     Example:
-    1 - python -m unittest [diretorio.prueba.modulo] #todo el modulo
-    2 - python -m unittest [diretorio.prueba.modulo.clases] #solo esa Clase
-    3 - python -m unittest [diretorio.prueba.modulo.clases.metodos] #solo ese metodo
-    4 - python -m unittest -v discover #esto ejecutara todas las pruebas de todas las clases y modulos.
+        #Todo el modulo
+    1 - python -m unittest [diretorio.prueba.modulo] 
+        #Solo esa Clase
+    2 - python -m unittest [diretorio.prueba.modulo.clases] 
+        #Solo ese metodo
+    3 - python -m unittest [diretorio.prueba.modulo.clases.metodos] 
+        #Esto ejecutara todas las pruebas de todas las clases y modulos.
+    4 - python -m unittest -v discover 
 """

@@ -4,12 +4,19 @@ from entities.product import Product
 from entities.product import ProductDiscountError
 from entities.shopping_cart import ShoppingCart
 
+#Mensages para los diferentes [skip] metodos
+skip_msg = 'La prueba no cumple con los requerimientos necesarios.'
+skipIF_msg = 'No se cuenta con todos los requerimientos.'
+skipUnLess_msg = 'No se cuenta con todos los requerimientos.'
+
+#funcion para verificar en true para el metodo [skipIf] 
 def is_available_to_skip():
     """En esta funcion se puede realizar las diferentes comprobaciones.
         para detectar si se puede realizar un prueba unitaria.
     """
     return True
 
+#funcion para verificar en false para el metodo [skipUnless] 
 def is_connected():
     """Es esta funcion se puere realizar el test si se realizado.
         una conexion a una base de datos. para de esta forma relizar
@@ -17,6 +24,9 @@ def is_connected():
     """
     return False
 
+
+#TestCase contiene todo los metodos de assert para los diferentes
+#casos de testeo.
 class TestShoppingCart(unittest.TestCase):
 
     @classmethod
@@ -44,7 +54,7 @@ class TestShoppingCart(unittest.TestCase):
 
 
     def tearDown(self):
-        """Este Metodo teardown se ejeuta despues de cada una de ls pruebas."""
+        """Este Metodo teardown se ejeuta despues de cada una de las pruebas."""
         pass
 
     def test_product_object(self):
@@ -64,10 +74,8 @@ class TestShoppingCart(unittest.TestCase):
         self.assertEqual(self.smartphone.price, self.price)
 
     def test_shopping_cart_empty(self):
-        self.assertTrue(
-            self.shopping_cart_1.empty(),
-            'Lo sentimos, el carrito de compra esta vacio!'
-        )
+        msg_error = 'Lo sentimos, el carrito de compra esta vacio!'
+        self.assertTrue(self.shopping_cart_1.empty(), msg_error)
 
     def test_shopping_cart_has_product(self):
         self.assertTrue(self.shopping_cart_2.has_products())
@@ -103,14 +111,14 @@ class TestShoppingCart(unittest.TestCase):
     def test_total_empty_shopping_cart(self):
         self.assertEqual(self.shopping_cart_1.total, 0)
 
-    #Formas de saltar, las pruebas unitarias. (Que las puebas no se ejecuten)
-    #En unittest, (1) - cuando el desarrollador, conoce de ante mano que la pueba no
-    #puede ejecutarce, (2) - cuando el desarrollador, desconoce su la prueba puede
-    #o no ejecutarse.
-    # pricipalmente debido a factores externos.
+    #Formas de saltar, las pruebas unitarias. (Que las pruebas no se ejecuten)
+    #En unittest, 
+    #(1) - cuando el desarrollador, conoce de ante mano que la pueba no puede ejecutarce, 
+    #(2) - cuando el desarrollador, desconoce su la prueba puede o no ejecutarse.
+    #pricipalmente debido a factores externos.
 
     #caso (1)
-    @unittest.skip('La prueba no cumple con los requerimientos necesarios.')
+    @unittest.skip(skip_msg)
     def test_skip_example(self):
         #Esta prueba sera saltada, y para ello utiliza el decorador @unittest.skip()
         #el cual recibe un string.
@@ -119,21 +127,26 @@ class TestShoppingCart(unittest.TestCase):
     #caso (2)
     # skipIf -> Evalua sobre Verdadero
     # skipUnless -> Evalua sobre Falso.
-    @unittest.skipIf(is_available_to_skip(),'No se cuenta con todos los requerimientos.')
+    @unittest.skipIf(is_available_to_skip(), skipIF_msg)
     def test_skip_example_two(self):
+        #Esta prueba sera saltada solo si se cumple una condicion booleana, [Evalua sobre Verdadero]
+        #y para ello utiliza el decorador @unittest.skipIf(arg1,arg2)
+        #donde el primero arg1 -> puede ser una funcion que retorne un boolean
+        #y el segundo arg2 -> sera un string con un msjs para el usuario.
         pass
 
-    @unittest.skipUnless(is_connected(),'No se cuenta con todos los requerimientos.')
+    @unittest.skipUnless(is_connected(), skipUnLess_msg)
     def test_skip_example_three(self):
+        #Esta prueba sera saltada solo si se cumple una condicion booleana, [Evalua sobre Falso]
+        #y para ello utiliza el decorador @unittest.skipUnless(arg1,arg2)
+        #donde el primero arg1 -> puede ser una funcion que retorne un boolean
+        #y el segundo arg2 -> sera un string con un msjs para el usuario.
         pass
 
     #Validar expresiones regulares con assertRegex
     def test_code_product(self):
-        self.assertRegex(
-            self.smartphone.code,
-            self.smartphone.name,
-            'la expresion, Lo sentimos, el codigo no cumple con la expresion'
-        )
+        msg_error = 'la expresion, Lo sentimos, el codigo no cumple con la expresion'
+        self.assertRegex(self.smartphone.code, self.smartphone.name, msg_error)
 
 if __name__ == '__main__':
     unittest.main()

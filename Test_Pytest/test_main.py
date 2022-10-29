@@ -14,9 +14,14 @@ def test_example():
 #y esta no hereda de otra. y dentro de la clase utilizarimos metodos
 #que inicien con [test_<nombre_del_metodo>]
 
-class TestExmaple():
+class TestExample():
     def test_suma_dos_numeros(self):
         assert 10 + 10 == 20, 'Lo sentimos, la suma no es correcta!'
 
     def test_resta_dos_numeros(self):
-        assert 10 - 10 == 20, 'Lo sentimos, la resta no es correcta!'
+        assert 10 - 10 == 0, 'Lo sentimos, la resta no es correcta!'
+
+
+class TestExample2():
+    def test_multiplicacion_dos__numeros(self):
+        assert 2 * 10 == 20, 'Lo sentimos, la multiplicacion no es correcta!'

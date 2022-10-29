@@ -32,5 +32,30 @@ Para ejecutar la libreria de pytest, simplente con el entorno activado, ejecutam
 
 => pytest
 
+### Como utilizar la libreria Pytest
+Despues de tener instalado la libreria de Pytest, (en el entorno virual).
+Solo lo ejecutamos con el comando:
+
+=> pytest
+
+Para que este pueda ejecutar todas los test que contenga la carpeta
+de conde fue ejecutado. Y se puede realizar varias formas, ya sea por
+medio de funciones y por medio de clases.
+
+1) - Para utilizar por medio de las funciones se realizar de la siguientes manera:
+=>  def test_<nombre_de_la_funcion>():
+        assert <condicion_a_evaluar>,<mensaje_del_error>
+
+2) - Para utilziar por medio de las clases se realizar de la siguiente manera:
+     esta clase no require adquirir una herrencia.
+=>  class Test<Example>():
+        def test_<nombre_del_metodo>(self):
+            assert <condicion_a_evaluar>,<mensaje_del_error>
+
+Al trabajar con clases para realizar las pruebas unitarias, podremos ejecutar una prueba en
+especifico. y tambien podremos ver el estado de las prueba con las bandera [-v]
+Estos para llevar a cabo la ejecucion de una prueba en especifico.
+
+=>  pytest <nombre_del_modulo>::<nombre_de_la_clase>::<nombre_del_metodo> -v
 
 

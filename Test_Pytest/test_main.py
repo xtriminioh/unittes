@@ -8,3 +8,15 @@ import pytest
 
 def test_example():
     assert 10 == 10
+
+#realiar puebas unitarias mediante la implementacion de las clases
+#se utilizar la siguiente nomenclatura [class Test<nombre_de_la_clase>()]
+#y esta no hereda de otra. y dentro de la clase utilizarimos metodos
+#que inicien con [test_<nombre_del_metodo>]
+
+class TestExmaple():
+    def test_suma_dos_numeros(self):
+        assert 10 + 10 == 20, 'Lo sentimos, la suma no es correcta!'
+
+    def test_resta_dos_numeros(self):
+        assert 10 - 10 == 20, 'Lo sentimos, la resta no es correcta!'

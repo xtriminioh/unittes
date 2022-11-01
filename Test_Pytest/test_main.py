@@ -15,6 +15,26 @@ def test_example():
 #que inicien con [test_<nombre_del_metodo>]
 
 class TestExample():
+
+    @classmethod
+    def setup_class(cls):
+        """Este metodo a nivel de clase, se ejecuta antes de todas las pruebas"""
+        pass
+
+    @classmethod
+    def teardown_class(cls):
+        """Este metodo a nivel de clase, se ejecuta desues de todas las pruebas"""
+        pass
+
+    def setup_method(self):
+        """Este metodo se ejecutara antes de cada prueba"""
+        print('>> method setup')
+
+    def teardown_method(self):
+        """Este metodo se ejecutara despues de cada prueba"""
+        print('>> method teardown')
+
+
     def test_suma_dos_numeros(self):
         assert 10 + 10 == 20, 'Lo sentimos, la suma no es correcta!'
 

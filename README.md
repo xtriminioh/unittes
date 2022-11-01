@@ -61,20 +61,20 @@ Estos para llevar a cabo la ejecucion de una prueba en especifico.
 
 ### Metodos Setup y Teardown en la libreria Pytest
 
-=> setup_method(self): 
+=> setup_method(self):   
         se ejecuta antes de cada prueba.
 
-=> teardown_method(self):
+=> teardown_method(self):  
         se ejecuta despues de cada prueba.
 
 Estos metodos se ejecutan a nivel de clase
 y estos tiene que llevar un decorador: @classmethod
 y resiven como parametro cls
 
-   @classmethod
-=> setup_class(cls):
+   @classmethod  
+=> setup_class(cls):  
         se ejecuta antes de todas las pruebas
 
-   @classmethod
-=> teardown_class(cls):
+   @classmethod  
+=> teardown_class(cls):  
         se ejecuta despues de todas las pruebas

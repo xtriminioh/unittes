@@ -1,0 +1,2 @@
+class TaskManager():
+    pass

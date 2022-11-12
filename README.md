@@ -78,3 +78,23 @@ y resiven como parametro cls
    @classmethod  
 => teardown_class(cls):  
         se ejecuta despues de todas las pruebas
+
+### Metodos de Etiquetado de la libreria Pytest  
+Una prueba puede tener multiples etiquetas o multiples marcas  
+Y una etiqueta puede estar en multiples pruebas.  
+
+Es por medio de estas marcar que podemos categorizar que pruebas  
+deseamos realiar.
+
+Para agregar una marca a una prueba solamente tenemos que decorarla  
+de la siguiete forma.
+
+=>  @pytest.mark.<nombre_etiqueta>
+    def test_<nombre_prueba>:
+        pass
+
+Para ejecutar solamente las marcas o etiquetas que deseamos
+lo podemos hacer con el flag -m <nombre_etiqueta>
+
+=> pytest <nombre_del_documento.py> -v -m <etiqueta>
+

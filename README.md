@@ -135,3 +135,23 @@ example:
 =>  @pytest.mark.skipif(condition , reason='<mensage>')  
     def test_skipif():  
         pass  
+
+
+### Proveer Datos a Pruebas (fixture)
+Las fixtures son funciones que se ejecutan antes de todas las pruebas y  
+tienen como objetivo proveer de ciertos parametros a las pruebas.  
+
+Las fixtures se utilizan para pasarles parametros las pruebas unitaras  
+que se implementan por medio de funciones, y para llevar a cabo esto  
+primero tenemos que crear un funcion que lleve como nombre el  
+mismo nombre del parametro que deseamos pasar a la funcion de prueba.  
+y esta tiene que esta decorada [@pytest.fixture] para que pytest reconoca  
+como un proveedor de Datos para un prueba en especifico.  
+
+example:  
+=>  @pytest.fixture
+    def username():  
+        return 'Cody'
+
+=>  def test_username(username):
+        assert username == 'Cody'

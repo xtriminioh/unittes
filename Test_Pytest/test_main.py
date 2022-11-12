@@ -34,14 +34,15 @@ class TestExample():
         """Este metodo se ejecutara despues de cada prueba"""
         print('>> method teardown')
 
-
     def test_suma_dos_numeros(self):
-        assert 10 + 10 == 20, 'Lo sentimos, la suma no es correcta!'
+        mgs = 'Lo sentimos, la suma no es correcta!'
+        assert 10 + 10 == 20, mgs 
 
     def test_resta_dos_numeros(self):
-        assert 10 - 10 == 0, 'Lo sentimos, la resta no es correcta!'
-
+        mgs = 'Lo sentimos, la resta no es correcta!'
+        assert 10 - 10 == 0, msg
 
 class TestExample2():
     def test_multiplicacion_dos__numeros(self):
-        assert 2 * 10 == 20, 'Lo sentimos, la multiplicacion no es correcta!'
+        mgs = 'Lo sentimos, la multiplicacion no es correcta!'
+        assert 2 * 10 == 20, msg 

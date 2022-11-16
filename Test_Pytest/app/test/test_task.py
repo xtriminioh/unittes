@@ -4,16 +4,18 @@ from datetime import datetime
 from datetime import timedelta
 from app.task import Task, DueDateError
 
-
 def is_available_to_skip():
     """En esta funcion se ejecutara para verificiar si se puede realizar la prueba unitaria o si esta tiene que ser saltada"""
     return False
 
 @pytest.fixture
 def username():
-    return 'Cody'
+    print('\n >>> Ejecutar el codigo antes de la prueba.')
+    yield 'Cody'
+    print('\n >>> Ejecutar el codigo despues de la prueba.')
 
 def test_username(username):
+    print(username)
     assert username == 'Cody'
 
 class TestTask():

@@ -141,7 +141,7 @@ example:
 Las fixtures son funciones que se ejecutan antes de todas las pruebas y  
 tienen como objetivo proveer de ciertos parametros a las pruebas.  
 
-Las fixtures se utilizan para pasarles parametros las pruebas unitaras  
+Las fixtures se utilizan para pasarles parametros las pruebas unitarias  
 que se implementan por medio de funciones, y para llevar a cabo esto  
 primero tenemos que crear un funcion que lleve como nombre el  
 mismo nombre del parametro que deseamos pasar a la funcion de prueba.  
@@ -155,3 +155,21 @@ example:
 
 =>  def test_username(username):
         assert username == 'Cody'
+
+
+### Modificaciones de las fixture
+Con la palabra reservada [yield] la cual permite pausar momentaneamente  
+la ejecución de la funcion cuando el bloque de codigo que llamo a la  
+finalize, reanudara sus actividades.  
+
+Por lanto utilizando [yield] seremos capases de ejecutar acciones  
+Antes o Despues de las pruebas.
+
+example:  
+=>  @pytest.fixture
+    def username():
+        yield '<username>'
+
+nota: La utilizacion de yield en las pruebas unitarias mediantes  
+      metodos de funciones, es para simular la [setup] y [teardown]  
+      que tiene las clases y los metodos de las clases.  

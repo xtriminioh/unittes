@@ -173,3 +173,45 @@ example:
 nota: La utilizacion de yield en las pruebas unitarias mediantes  
       metodos de funciones, es para simular la [setup] y [teardown]  
       que tiene las clases y los metodos de las clases.  
+
+
+### Parametrización de pruebas 
+
+Las parametrizacion de las pruebas unitarias, nos dan la facilidad de automatizar  
+y realizar [n] cantidad de veces una prueba. 
+
+Para poder parametrizar una prueba lo primero que tenemos que hacer es darle  
+nombres a los argumentos que necesitamos para llevar a cabo el test:
+
+(1)     def test_new_task(self, title, descripcion, assigned_to, due_date):  
+                task = Task(title, descripcion, assigned_to. due_date)  
+
+                assert task.title == title  
+                assert task.description == descripcion  
+                assert task.assigned_to == assigned_to  
+                assert task.due_date == due_date   
+
+despues de eso pasamos al segundo paso, en que decoramos la funcion de prueba  
+de la siguiente forma en el paso (2) en donde la mark.parametrize() recibe 2  
+argumentos los cuales son un string y una lista de tuplas:  
+[string] => en esta tiene que ir los nombre de los argumentos que pasaremos  
+            a la funcion de prueba. y   
+
+[list] =>   en esta tiene iran un listado de tuplas con el orden de los  
+            parametros que pasaremos, segun la cantidad de tuplas incluidad  
+            aqui, asi seran las cantidad de veces que se repetira la prueba.  
+
+(2)     @pytest.mark.parametrize(  
+                'title, description, assigned_to, due_date',
+                [
+                        ('title 1', 'description 1', 'assigned_to', 'due_date')
+                ]
+
+        )
+(1)     def test_new_task(self, title, descripcion, assigned_to, due_date):  
+                task = Task(title, descripcion, assigned_to. due_date)  
+
+                assert task.title == title  
+                assert task.description == descripcion  
+                assert task.assigned_to == assigned_to  
+                assert task.due_date == due_date   

@@ -107,8 +107,8 @@ example:
     def test_<nombre_prueba>:  
         pass  
 
-Para ejecutar solamente las marcas o etiquetas que deseamos
-lo podemos hacer con el flag -m <nombre_etiqueta>
+Para ejecutar solamente las marcas o etiquetas que deseamos  
+lo podemos hacer con el flag -m <nombre_etiqueta>  
 
 example:  
 => pytest <nombre_del_documento.py> -v -m <etiqueta>  
@@ -151,10 +151,10 @@ como un proveedor de Datos para un prueba en especifico.
 example:  
 =>  @pytest.fixture
     def username():  
-        return 'Cody'
+        return 'Cody'  
 
-=>  def test_username(username):
-        assert username == 'Cody'
+=>  def test_username(username):  
+        assert username == 'Cody'  
 
 
 ### Modificaciones de las fixture
@@ -166,9 +166,9 @@ Por lanto utilizando [yield] seremos capases de ejecutar acciones
 Antes o Despues de las pruebas.
 
 example:  
-=>  @pytest.fixture
-    def username():
-        yield '<username>'
+=>  @pytest.fixture  
+    def username():  
+        yield '<username>'  
 
 nota: La utilizacion de yield en las pruebas unitarias mediantes  
       metodos de funciones, es para simular la [setup] y [teardown]  

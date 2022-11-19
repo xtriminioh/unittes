@@ -17,9 +17,9 @@ Luego se crea un archivo main, del cual se realiza la importacion del modulo con
 siguientes formato:
 
 example:  
-~~~
+```python
         from [nombre_modulo] import [nombre_clase]  
-~~~
+```
 
 ### Libreria de Pytest
 creamos una nueva carpeta, con el nombre Libreria_Pytest para ahi tener que ir colocando
@@ -29,19 +29,27 @@ virtual, en mi caso con Conda. Y luego de tener ya creado y activiado el entorno
 ejecutamos el siguiente comando:  
 
 example:  
-'python -m pip install pytest'
+```python
+        python -m pip install pytest
+```
 
 Para ejecutar la libreria de pytest, simplente con el entorno activado, ejecutamos:  
 
 example:  
-=> pytest  
+
+```python
+        pytest  
+```
 
 ### Como utilizar la libreria Pytest
 Despues de tener instalado la libreria de Pytest, (en el entorno virual).  
 Solo lo ejecutamos con el comando:  
 
 example:  
-=> pytest  
+
+```python
+        pytest  
+```
 
 Para que este pueda ejecutar todas los test que contenga la carpeta  
 de conde fue ejecutado. Y se puede realizar varias formas, ya sea por  
@@ -50,49 +58,67 @@ medio de funciones y por medio de clases.
 1) - Para utilizar por medio de las funciones se realizar de la siguientes manera:  
 
 example:  
-=>  def test_<nombre_de_la_funcion>():  
-        assert <condicion_a_evaluar>,<mensaje_del_error>  
+
+```python
+        def test_<nombre_de_la_funcion>():  
+                assert <condicion_a_evaluar>,<mensaje_del_error>  
+```
 
 2) - Para utilziar por medio de las clases se realizar de la siguiente manera:  
      esta clase no require adquirir una herrencia.  
 
 example:  
-=>  class Test<Example>():  
-        def test_<nombre_del_metodo>(self):  
-            assert <condicion_a_evaluar>,<mensaje_del_error>  
+
+```python
+        class Test<Example>():  
+                def test_<nombre_del_metodo>(self):  
+                        assert <condicion_a_evaluar>,<mensaje_del_error>  
+```
 
 Al trabajar con clases para realizar las pruebas unitarias, podremos ejecutar una prueba en  
 especifico. y tambien podremos ver el estado de las prueba con las bandera [-v]  
 Estos para llevar a cabo la ejecucion de una prueba en especifico.
 
 example:  
-=>  pytest <nombre_del_modulo>::<nombre_de_la_clase>::<nombre_del_metodo> -v  
 
+```python
+        pytest <nombre_del_modulo>::<nombre_de_la_clase>::<nombre_del_metodo> -v  
+```
 
 ### Metodos Setup y Teardown en la libreria Pytest
 
 example:  
-=> setup_method(self):  
-        se ejecuta antes de cada prueba.  
 
+```python
+        def setup_method(self):  
+        #se ejecuta antes de cada prueba.  
+```
 
 example:  
-=> teardown_method(self):  
-        se ejecuta despues de cada prueba.  
+```python
+        def teardown_method(self):  
+        #se ejecuta despues de cada prueba.  
+```
 
 Estos metodos se ejecutan a nivel de clase  
 y estos tiene que llevar un decorador: @classmethod  
 y resiven como parametro cls  
 
 example:  
-   @classmethod  
-=> setup_class(cls):  
-        se ejecuta antes de todas las pruebas  
+
+```python
+        @classmethod  
+        def setup_class(cls):
+        #se ejecuta antes de todas las pruebas  
+```
 
 example:  
-   @classmethod  
-=> teardown_class(cls):  
-        se ejecuta despues de todas las pruebas  
+
+```python
+        @classmethod  
+        def teardown_class(cls):  
+        #se ejecuta despues de todas las pruebas  
+```
 
 ### Metodos de Etiquetado de la libreria Pytest  
 Una prueba puede tener multiples etiquetas o multiples marcas  
@@ -105,16 +131,20 @@ Para agregar una marca a una prueba solamente tenemos que decorarla
 de la siguiete forma.
 
 example:  
-=>  @pytest.mark.<nombre_etiqueta>  
-    def test_<nombre_prueba>:  
-        pass  
+
+```python
+        @pytest.mark.<nombre_etiqueta>  
+        def test_<nombre_prueba>:  
+                pass  
+```
 
 Para ejecutar solamente las marcas o etiquetas que deseamos  
 lo podemos hacer con el flag -m <nombre_etiqueta>  
 
 example:  
-=> pytest <nombre_del_documento.py> -v -m <etiqueta>  
-
+```python
+        pytest <nombre_del_documento.py> -v -m <etiqueta>  
+```
 
 ### Etiquetas skip y skipif  
 Para hacer uso de este tipo de etiquetas lo unico que tenemos que hacer  
@@ -123,9 +153,12 @@ con un parametro (reason='<mensaje>') para dar a conocer porque se esta
 saltando el metodo decorado.
 
 example:  
-=>  @pytest.mark.skip(reason='<mensage>')  
+
+```python
+    @pytest.mark.skip(reason='<mensage>')  
     def test_skip():  
-        pass  
+        pass
+```
 
 Tambien contamos con la etiqueta skipif el cual evalua sobre verdadero,  
 lo que quiere decir que si la condicion evaluada es [True] esta prueba  
@@ -134,10 +167,12 @@ la prueba se ejecutara con normalidad.
 
 
 example:  
-=>  @pytest.mark.skipif(condition , reason='<mensage>')  
-    def test_skipif():  
-        pass  
 
+```python
+    @pytest.mark.skipif(condition , reason='<mensage>')  
+    def test_skipif():  
+        pass
+```
 
 ### Proveer Datos a Pruebas (fixture)
 Las fixtures son funciones que se ejecutan antes de todas las pruebas y  
@@ -151,13 +186,14 @@ y esta tiene que esta decorada [@pytest.fixture] para que pytest reconoca
 como un proveedor de Datos para un prueba en especifico.  
 
 example:  
-=>  @pytest.fixture
+```python
+    @pytest.fixture
     def username():  
         return 'Cody'  
 
-=>  def test_username(username):  
+    def test_username(username):  
         assert username == 'Cody'  
-
+```
 
 ### Modificaciones de las fixture
 Con la palabra reservada [yield] la cual permite pausar momentaneamente  
@@ -168,9 +204,11 @@ Por lanto utilizando [yield] seremos capases de ejecutar acciones
 Antes o Despues de las pruebas.
 
 example:  
-=>  @pytest.fixture  
+```python
+    @pytest.fixture  
     def username():  
         yield '<username>'  
+```
 
 nota: La utilizacion de yield en las pruebas unitarias mediantes  
       metodos de funciones, es para simular la [setup] y [teardown]  
@@ -185,13 +223,17 @@ y realizar [n] cantidad de veces una prueba.
 Para poder parametrizar una prueba lo primero que tenemos que hacer es darle  
 nombres a los argumentos que necesitamos para llevar a cabo el test:
 
-(1)     def test_new_task(self, title, descripcion, assigned_to, due_date):  
+example:
+
+```python
+        def test_new_task(self, title, descripcion, assigned_to, due_date):  
                 task = Task(title, descripcion, assigned_to. due_date)  
 
                 assert task.title == title  
                 assert task.description == descripcion  
                 assert task.assigned_to == assigned_to  
                 assert task.due_date == due_date   
+```
 
 despues de eso pasamos al segundo paso, en que decoramos la funcion de prueba  
 de la siguiente forma en el paso (2) en donde la mark.parametrize() recibe 2  
@@ -202,18 +244,21 @@ argumentos los cuales son un string y una lista de tuplas:
 [list] =>   en esta tiene iran un listado de tuplas con el orden de los  
             parametros que pasaremos, segun la cantidad de tuplas incluidad  
             aqui, asi seran las cantidad de veces que se repetira la prueba.  
-
-(2)     @pytest.mark.parametrize(  
+```python
+#(2)     
+        @pytest.mark.parametrize(  
                 'title, description, assigned_to, due_date',
                 [
                         ('title 1', 'description 1', 'assigned_to', 'due_date')
                 ]
 
         )
-(1)     def test_new_task(self, title, descripcion, assigned_to, due_date):  
+#(1)     
+        def test_new_task(self, title, descripcion, assigned_to, due_date):  
                 task = Task(title, descripcion, assigned_to. due_date)  
 
                 assert task.title == title  
                 assert task.description == descripcion  
                 assert task.assigned_to == assigned_to  
                 assert task.due_date == due_date   
+```

@@ -17,7 +17,9 @@ Luego se crea un archivo main, del cual se realiza la importacion del modulo con
 siguientes formato:
 
 example:  
-=> from [nombre_modulo] import [nombre_clase]  
+~~~
+        from [nombre_modulo] import [nombre_clase]  
+~~~
 
 ### Libreria de Pytest
 creamos una nueva carpeta, con el nombre Libreria_Pytest para ahi tener que ir colocando

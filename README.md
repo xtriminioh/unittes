@@ -29,7 +29,7 @@ virtual, en mi caso con Conda. Y luego de tener ya creado y activiado el entorno
 ejecutamos el siguiente comando:  
 
 example:  
-=> python -m pip install pytest  
+'python -m pip install pytest'
 
 Para ejecutar la libreria de pytest, simplente con el entorno activado, ejecutamos:  
 

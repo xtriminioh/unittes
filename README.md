@@ -262,3 +262,70 @@ argumentos los cuales son un string y una lista de tuplas:
                 assert task.assigned_to == assigned_to  
                 assert task.due_date == due_date   
 ```
+
+### Cobertura de Código
+Es una medida de porcentual, el cual no dice que pocentaje de nuestro codigo a sido  
+ejecutado y tambien probado.  
+
+y para poder ver oportunidades de mejora en nuestro codigo, y poder refactorizar.
+
+utilizaremos la libreria [coverage] en un entorno virtual
+
+```bash
+        python -m pip install coverage
+```
+
+example:
+
+```bash
+        coverage run -m pytest app/test/test_task.py
+#salidad
+        ============================= test session starts ==============================
+        platform linux -- Python 3.10.4, pytest-7.2.0, pluggy-1.0.0
+        rootdir: /workspaces/unittes/Test_Pytest/app/test, configfile: pytest.ini
+        collected 10 items
+
+        app/test/test_task.py ........s.                                         [100%]
+
+        ========================= 9 passed, 1 skipped in 0.02s =========================
+```
+
+Despues de aver ejecutado el [ coverage run ] en nuestros documentos se genera un documento  
+con [ .coverage ] en donde esta resumidor los resultados de la ejecucion de nuestro codigo.  
+
+para ver este resumen o reporte solo tenemos que ejecutar lo siguientes en la consola.  
+
+```bash
+        coverage report
+#salida
+
+        Name                    Stmts   Miss  Cover
+        -------------------------------------------
+        app/__init__.py             0      0   100%
+        app/task.py                11      0   100%
+        app/test/__init__.py        0      0   100%
+        app/test/test_task.py      44      1    98%
+        -------------------------------------------
+        TOTAL                      55      1    98%
+```
+
+como se puede ver en el reporte solo del script test_task.py tenemos [ Miss 1 ]  
+eso quiere decir que no se ejecuto a su 100%. y para ver que linea fue la que no  
+se ejecuto solo tenemos que pasas el flag -m de la siguiente forma.
+
+```bash
+        coverage report -m
+#salida
+
+        Name                    Stmts   Miss  Cover   Missing
+        -----------------------------------------------------
+        app/__init__.py             0      0   100%
+        app/task.py                11      0   100%
+        app/test/__init__.py        0      0   100%
+        app/test/test_task.py      44      1    98%   64
+        -----------------------------------------------------
+        TOTAL                      55      1    98%
+``` 
+
+en la columna [ Missing ] no da un resultado para el script test_task.py de 64 en cual  
+corresponde al numero de la linea que no se a ejecutado.

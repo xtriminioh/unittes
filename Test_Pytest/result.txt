@@ -1,0 +1,8 @@
+Name                    Stmts   Miss  Cover   Missing
+-----------------------------------------------------
+app/__init__.py             0      0   100%
+app/task.py                11      0   100%
+app/test/__init__.py        0      0   100%
+app/test/test_task.py      44      1    98%   64
+-----------------------------------------------------
+TOTAL                      55      1    98%
